@@ -8,16 +8,17 @@ from archnemesis_recipes import *
 
 
 def main():
-    app     = QtWidgets.QApplication(sys.argv)
-    tree    = QtWidgets.QTreeWidget()
-    headerItem  = QtWidgets.QTreeWidgetItem()
-    item    = QtWidgets.QTreeWidgetItem()
-
+    app = QtWidgets.QApplication(sys.argv)
+    tree = QtWidgets.QTreeWidget()
+    headerItem = QtWidgets.QTreeWidgetItem()
+    item = QtWidgets.QTreeWidgetItem()
+    tree.setFixedSize(400, 600)
 
     for i in tier4:
         parent = QtWidgets.QTreeWidgetItem(tree)
         parent.setText(0, "{}".format(i.name))
-        parent.setFlags(parent.flags() | Qt.ItemIsTristate | Qt.ItemIsUserCheckable)
+        parent.setFlags(parent.flags() | Qt.ItemIsTristate |
+                        Qt.ItemIsUserCheckable)
         # only applies to the first backward layer.
         # usually each x has at least one more backward layer.
         # TODO substitute next 6 lines with a recursive call
@@ -30,9 +31,9 @@ def main():
     tree.show()
     sys.exit(app.exec_())
 
+
 if __name__ == '__main__':
     main()
 
 # for j in tier1:
 #     print(j.backward is not None)
-
